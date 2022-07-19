@@ -87,24 +87,5 @@ data "aws_ami" "ubuntu" {
       Name = "permitir_ssh_e_http"
     }
 
-    ## Configuração do Load Balance
-resource "aws_elb" "this" {
-    name = "ec2-elb"
-    ## Instâncias a serem registradas - Configuradas acima!
-    instances = ["${aws_instance.Server001.id}", "${aws_instance.Server002.id}"]
-    availability_zones = ["us-east-1a"]
-    
-    ## Listener Ports do Load Balance
-    listener {
-        instance_port = 80
-      instance_protocol = "tcp"
-      lb_port = 80
-      lb_protocol = "tcp"
-    }
-    
-    }
-  
-    tags {
-      Name = "ec2-elb"
-    }
-  }
+}
+   
